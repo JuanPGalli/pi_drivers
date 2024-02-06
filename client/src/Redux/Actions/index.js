@@ -13,7 +13,7 @@ import {
 export function postNewDriver(info) {
   return async function () {
     try {
-      const response = await axios.post("http://localhost:3001/drivers", {
+      const response = await axios.post("/drivers", {
         name: info.name,
         surname: info.surname,
         description: info.description,
@@ -33,7 +33,7 @@ export function postNewDriver(info) {
 export function getAllTeams() {
   return async function (dispatch) {
     try {
-      const allTeams = (await axios.get("http://localhost:3001/teams/")).data;
+      const allTeams = (await axios.get("/teams/")).data;
       return dispatch({
         type: GET_ALL_TEAMS,
         payload: allTeams,
@@ -48,7 +48,7 @@ export function getAllTeams() {
 export function getAllDrivers() {
   return async function (dispatch) {
     try {
-      const result = (await axios.get("http://localhost:3001/drivers/")).data;
+      const result = (await axios.get("/drivers/")).data;
       return dispatch({
         type: GET_ALL_DRIVERS,
         payload: result,
@@ -84,7 +84,7 @@ export function filterByTeam(value, filterType) {
 export function getDriverById(id) {
   return async function (dispatch) {
     try {
-      const result = (await axios.get(`http://localhost:3001/drivers/${id}`))
+      const result = (await axios.get(`/drivers/${id}`))
         .data;
       if (!result.image) {
         result.image = "defaultImage.jpg";
@@ -111,7 +111,7 @@ export function getDriverByName(searchBar) {
   return async function (dispatch) {
     try {
       const result = (
-        await axios.get(`http://localhost:3001/drivers/?name=${searchBar}`)
+        await axios.get(`/drivers/?name=${searchBar}`)
       ).data;
       console.log(result);
       return dispatch({
