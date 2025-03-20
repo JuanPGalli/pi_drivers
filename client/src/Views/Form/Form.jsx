@@ -175,60 +175,82 @@ const Form = () => {
   }, []);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="inputs">
-        <div className="divs">
-          <label>Name:</label>
-          <input
-            name="name"
-            placeholder="Name 2-15 characters"
-            type="text"
-            onChange={handleChange}
-          />
-          {errors.name}
+    <div className="form-container">
+      <form onSubmit={handleSubmit} className="register-form">
+        <h2 className="form-title">Create Your Driver</h2>
+        <p className="form-subtitle">Complete the form below:</p>
+
+        {/* Name & Surname */}
+        <div className="input-group">
+          <div className="input-wrapper-name">
+            <input
+              name="name"
+              placeholder="Name (2-15 characters)"
+              type="text"
+              onChange={handleChange}
+              className="form-input"
+            />
+            {errors.name && (
+              <span className="error-message">{errors.name}</span>
+            )}
+          </div>
+
+          <div className="input-wrapper-surname">
+            <input
+              name="surname"
+              placeholder="Surname (2-15 characters)"
+              type="text"
+              onChange={handleChange}
+              className="form-input"
+            />
+            {errors.surname && (
+              <span className="error-message">{errors.surname}</span>
+            )}
+          </div>
         </div>
-        <div className="divs">
-          <label>Surname:</label>
-          <input
-            name="surname"
-            placeholder="Surname 2-15 characters"
-            type="text"
-            onChange={handleChange}
-          />
-          {errors.surname}
-        </div>
-        <div className="divs">
-          <label>Nationality:</label>
+
+        {/* Nationality */}
+        <div className="input-container">
           <input
             name="nationality"
-            placeholder="Only letter characters"
+            placeholder="Nationality (Only letters)"
             type="text"
             onChange={handleChange}
+            className="form-input"
           />
-          {errors.nationality}
+          {errors.nationality && (
+            <span className="error-message">{errors.nationality}</span>
+          )}
         </div>
-        <div className="divs">
-          <label>Date of Birth:</label>
+
+        {/* Date of Birth */}
+        <div className="input-container">
           <input
             name="dob"
-            placeholder="YYYY-MM-DD"
+            placeholder="Date of Birth (YYYY-MM-DD)"
             type="text"
             onChange={handleChange}
+            className="form-input"
           />
-          {errors.dob}
+          {errors.dob && <span className="error-message">{errors.dob}</span>}
         </div>
-        <div className="divs">
-          <label>Description:</label>
+
+        {/* Description */}
+        <div className="input-container">
           <input
             name="description"
-            placeholder="0-1000 characters"
+            placeholder="Description (0-1000 characters)"
             type="text"
             onChange={handleChange}
+            className="form-input"
           />
-          {errors.description}
+          {errors.description && (
+            <span className="error-message">{errors.description}</span>
+          )}
         </div>
-        <label>Teams:</label>
-        <select name="teams" onChange={handleChange}>
+
+        {/* Teams Selection */}
+        <select name="teams" onChange={handleChange} className="teams-btn">
           <option value="none">Select Teams</option>
           {allTeams.map((team) => (
             <option key={team.id} value={team.id}>
@@ -240,7 +262,7 @@ const Form = () => {
           disabled={disable()}
           type="submit"
           name="submit"
-          value="CREATE"
+          value="CREATE DRIVER"
           className="submit-btn"
         />
       </form>
