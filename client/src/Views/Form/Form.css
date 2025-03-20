@@ -1,43 +1,9 @@
-/* .inputs {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  color: aquamarine;
-}
-.error-message {
-  color: red;
-  font-size: 0.9rem;
-}
-
-.error-container {
-  width: 500px; 
-  margin-left: 1rem; 
-}
-.inputs input {
-  border-radius: 10px;
-}
-.inputs div {
-  margin-bottom: 20px;
-}
-.submit-btn {
-  margin-top: 50px;
-  margin-left: 335px;
-  border-radius: 10px;
-  font-family: Arial;
-  font-weight: bolder;
-  background-color: rgba(180, 230, 239, 0.7);
-}
-.submit-btn:hover {
-  background-color: rgba(207, 202, 218, 0.3);
-}*/
-
 .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #121212;
+  background-color: #82a1b1;
 }
 
 .register-form {
@@ -70,17 +36,11 @@
   width: 100%;
 }
 
-.input-wrapper-name {
+.input-wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-right: 20px;
-}
-
-.input-wrapper-surname {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  align-items: flex-start;
 }
 
 .input-container {
@@ -88,6 +48,7 @@
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .form-input {
@@ -97,6 +58,7 @@
   border: 1px solid #ccc;
   outline: none;
   font-size: 1rem;
+  box-sizing: border-box;
 }
 
 .error-message {

@@ -182,7 +182,7 @@ const Form = () => {
 
         {/* Name & Surname */}
         <div className="input-group">
-          <div className="input-wrapper-name">
+          <div className="input-wrapper">
             <input
               name="name"
               placeholder="Name (2-15 characters)"
@@ -195,7 +195,7 @@ const Form = () => {
             )}
           </div>
 
-          <div className="input-wrapper-surname">
+          <div className="input-wrapper">
             <input
               name="surname"
               placeholder="Surname (2-15 characters)"
