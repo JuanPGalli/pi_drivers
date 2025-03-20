@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postNewDriver, getAllTeams, getAllDrivers } from "../../Redux/Actions";
 import "./Form.css";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const [input, setInput] = useState({
@@ -21,6 +22,7 @@ const Form = () => {
     description: "Description is required",
     teams: "",
   });
+  const navigate = useNavigate();
 
   const allTeams = useSelector((state) => state.allTeams);
 
@@ -262,9 +264,12 @@ const Form = () => {
           disabled={disable()}
           type="submit"
           name="submit"
-          value="CREATE DRIVER"
+          value="CONFIRM"
           className="submit-btn"
         />
+        <button className="home-btn" onClick={() => navigate("/home")}>
+          CANCEL
+        </button>
       </form>
     </div>
   );
