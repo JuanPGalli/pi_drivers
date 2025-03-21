@@ -13,7 +13,7 @@ import {
 
 const Home = () => {
   const dispatch = useDispatch();
-  const ITEMS_PER_PAGE = 9;
+  const ITEMS_PER_PAGE = 8;
   const allDrivers = useSelector((state) => state.allDrivers);
   const allTeams = useSelector((state) => state.allTeams);
   const driversFiltered = useSelector((state) => state.driversFiltered);
