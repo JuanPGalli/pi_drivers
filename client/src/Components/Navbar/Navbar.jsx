@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import f1Logo from "./Logo-f1.png";
+import f1Logo from "/Logo-f1.png";
 import "./Navbar.css";
 
 const Navbar = () => {

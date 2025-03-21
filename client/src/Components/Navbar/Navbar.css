@@ -1,10 +1,10 @@
 .nav-container {
-  /* background: linear-gradient(
-    to right,
-    rgb(21, 159, 141) 0%,
-    rgb(56, 58, 159) 100%
-  ); */
-  background-color: #80ddff;
+  /* background-color: #80ddff; */
+  background: linear-gradient(
+    to left,
+    rgba(7, 27, 82, 1) 0%,
+    rgba(0, 128, 128, 1) 100%
+  );
   display: flex;
 }
 

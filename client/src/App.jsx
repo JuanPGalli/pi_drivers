@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./Views/Home/Home";
 import Landing from "./Views/Landing/Landing";
 import Navbar from "./Components/Navbar/Navbar";
@@ -10,22 +10,21 @@ import axios from "axios";
 axios.defaults.baseURL = "https://pidrivers-production.up.railway.app/";
 
 function App() {
-  //const location = useLocation();
-
+  const location = useLocation();
+  const showNavbar =
+    location.pathname === "/home" || location.pathname.startsWith("/detail");
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route exact path={"/"} element={<Landing />} />
-          <Route path={"/home"} element={<Home />} />
+    <div className="App">
+      {showNavbar && <Navbar />}
+      <Routes>
+        <Route exact path={"/"} element={<Landing />} />
+        <Route path={"/home"} element={<Home />} />
 
-          <Route path={"/create"} element={<Form />} />
+        <Route path={"/create"} element={<Form />} />
 
-          <Route path={"/detail/:id"} element={<Detail />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+        <Route path={"/detail/:id"} element={<Detail />} />
+      </Routes>
+    </div>
   );
 }
 
