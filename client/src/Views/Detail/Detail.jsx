@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanState, getDriverById } from "../../Redux/Actions";
-import loader from "./spinning-loading.gif";
+import loader from "/spinning-loading.gif";
 //import Img from "./defaultImage.jpg";
 import "./Detail.css";
 
