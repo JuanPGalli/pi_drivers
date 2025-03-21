@@ -5,7 +5,6 @@
   background-color: #95dada;
   border: 1px solid grey;
   width: calc(25% - 30px); /*25% width - ajustar margen*/
-  /*  width: min(25%, 250px); */ /* Ajusta la card a un tamaño razonable */
   margin: 10px;
   border-radius: 5%;
 
@@ -42,4 +41,11 @@
 
 .card-info h4 {
   margin: 5%;
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+  .card-container {
+    width: calc(50% - 30px);
+  }
 }
