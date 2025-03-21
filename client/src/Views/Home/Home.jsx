@@ -175,15 +175,23 @@ const Home = () => {
           </select>
           <select onChange={filterOrd} name="" id="">
             <option defaultChecked value="0">
-              - Order and Filter by
+              - Order by
             </option>
             <option value="name asc">name asc</option>
             <option value="name dct">name dct</option>
             <option value="dob asc">dob asc</option>
             <option value="dob dct">dob dct</option>
-            <option value="API">API</option>
-            <option value="DB">DB</option>
           </select>
+          {/* Botones individuales para API y DB */}
+          <button
+            className="filter-btn"
+            onClick={() => dispatch(filter("API"))}
+          >
+            API
+          </button>
+          <button className="filter-btn" onClick={() => dispatch(filter("DB"))}>
+            DB
+          </button>
         </div>
       </div>
       {driverByName.length > 0 ? (
