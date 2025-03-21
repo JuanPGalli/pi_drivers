@@ -158,6 +158,7 @@ const Home = () => {
         </div>
         <div className="home-pagination">
           <button onClick={prevPage}>Prev</button>
+          <span className="page-number">Page {currentPage + 1}</span>
           <button onClick={nextPage}>Next</button>
         </div>
         <div className="home-filters">
