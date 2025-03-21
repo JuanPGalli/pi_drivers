@@ -162,11 +162,10 @@ const Home = () => {
           <button onClick={nextPage}>Next</button>
         </div>
         <div className="home-filters">
-          <label>Teams Filter: </label>
           {console.log(driversFiltered)}
           <select onChange={filterTeam}>
             <option defaultChecked value="0">
-              -
+              - Filter By Team
             </option>
             {allTeams.map((team) => (
               <option key={team.id} value={team.name}>
@@ -174,10 +173,9 @@ const Home = () => {
               </option>
             ))}
           </select>
-          <label>Order and Filter by: </label>
           <select onChange={filterOrd} name="" id="">
             <option defaultChecked value="0">
-              -
+              - Order and Filter by
             </option>
             <option value="name asc">name asc</option>
             <option value="name dct">name dct</option>
