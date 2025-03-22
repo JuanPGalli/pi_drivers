@@ -31,17 +31,13 @@ body {
 }
 .home-bar {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 20px;
-  margin-right: 280px;
-  margin: 10px;
+  justify-content: space-around;
+  gap: 1em;
+  width: 100%;
 }
 
 /* SearchBar estilizada */
 .home-searchBar {
-  margin-right: 30px;
 }
 
 .home-searchBar input {
@@ -79,8 +75,8 @@ body {
 /* Estilo de los filtros */
 .home-filters {
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
   border-radius: 5%;
 }
 
@@ -117,7 +113,6 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-right: 10px;
   border-radius: 5%;
 }
 
