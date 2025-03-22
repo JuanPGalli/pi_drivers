@@ -144,16 +144,19 @@ body {
   .home-bar {
     flex-direction: column;
     align-items: center;
+    gap: 0.5em;
   }
 
   .home-searchBar input {
     width: 50%;
-    font-size: 0.8em;
+    font-size: 0.85em;
   }
 
   .home-filters {
     flex-wrap: wrap;
-    margin-left: 10%;
     border-radius: 5%;
+  }
+  .home-filters select {
+    font-size: 0.85em;
   }
 }

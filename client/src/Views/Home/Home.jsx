@@ -165,7 +165,7 @@ const Home = () => {
           {console.log(driversFiltered)}
           <select onChange={filterTeam}>
             <option defaultChecked value="0">
-              - Filter By Team
+              Team Filter
             </option>
             {allTeams.map((team) => (
               <option key={team.id} value={team.name}>
@@ -175,7 +175,7 @@ const Home = () => {
           </select>
           <select onChange={filterOrd} name="" id="">
             <option defaultChecked value="0">
-              - Order by
+              Order by
             </option>
             <option value="name asc">name asc</option>
             <option value="name dct">name dct</option>
