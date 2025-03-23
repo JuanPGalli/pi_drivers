@@ -4,6 +4,7 @@
   align-items: center;
   height: 100vh;
   background-color: #82a1b1;
+  padding: 20px;
 }
 
 .register-form {
@@ -11,15 +12,18 @@
   padding: 30px;
   border-radius: 10px;
   width: 400px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .form-title {
   font-size: 1.8rem;
   color: #10b981;
+  text-align: center;
 }
 
 .form-subtitle {
@@ -29,6 +33,7 @@
   margin-bottom: 20px;
 }
 
+/* Contenedor de inputs */
 .input-group {
   display: flex;
   margin-bottom: 15px;
@@ -51,9 +56,10 @@
   align-items: flex-start;
 }
 
+/* Inputs */
 .form-input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border-radius: 5px;
   border: 1px solid #ccc;
   outline: none;
@@ -61,12 +67,14 @@
   box-sizing: border-box;
 }
 
+/* Mensajes de error */
 .error-message {
   color: red;
   font-size: 0.8rem;
   margin-top: 5px;
 }
 
+/* Botón de selección de equipos */
 .teams-btn {
   width: 100%;
   padding: 10px;
@@ -84,9 +92,10 @@
   background-color: #4b5563;
 }
 
+/* Botón de envío */
 .submit-btn {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #10b981;
   color: white;
   border: none;
@@ -103,10 +112,11 @@
   box-shadow: 0 0 5px 1px #04ed23;
 }
 
+/* Botón de cancelar */
 .home-btn {
   width: 100%;
-  margin-top: 20px;
-  padding: 10px;
+  margin-top: 15px;
+  padding: 12px;
   border-radius: 5px;
   font-size: 1rem;
   color: white;
@@ -120,4 +130,60 @@
 .home-btn:hover {
   background-color: rgba(207, 202, 218, 0.3);
   box-shadow: 0 0 10px 1px grey;
+}
+
+/* Diseño responsive */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 768px) {
+  .register-form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .form-input {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .submit-btn,
+  .home-btn {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Celulares (Menos de 600px) */
+@media (max-width: 600px) {
+  .input-group {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .form-title {
+    font-size: 1.3rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .form-input {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .submit-btn,
+  .home-btn {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
 }
