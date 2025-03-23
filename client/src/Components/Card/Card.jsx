@@ -24,9 +24,10 @@ const Card = ({ id, name, surname, image, teams }) => {
       </Link>
 
       <div className="card-info">
-        <h4>Name: {name}</h4>
-        <h4>Surname: {surname}</h4>
-        <h4>Teams: {teams}</h4>
+        <h4>
+          {name} {surname}
+        </h4>
+        <h4>{teams}</h4>
       </div>
     </div>
   );

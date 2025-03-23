@@ -32,8 +32,9 @@ const Detail = () => {
       </div>
       <div className="card-info-detail">
         <h4>ID: {driverById?.id}</h4>
-        <h4>Name: {driverById?.name}</h4>
-        <h4>Surname: {driverById?.surname}</h4>
+        <h4>
+          Name: {driverById?.name} {driverById?.surname}
+        </h4>
         <h4>Nationality: {driverById?.nationality}</h4>
         <h4>Description: {driverById?.description}</h4>
         <h4>Date of Birth: {driverById?.dob}</h4>
