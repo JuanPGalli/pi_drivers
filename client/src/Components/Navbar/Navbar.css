@@ -1,5 +1,4 @@
-.nav-container {
-  /* background-color: #80ddff; */
+/* .nav-container {
   background: linear-gradient(
     to left,
     rgba(7, 27, 82, 1) 0%,
@@ -27,4 +26,80 @@
   font-weight: bold;
   font-size: 120%;
   white-space: nowrap;
+} */
+.nav-container {
+  background: linear-gradient(
+    to left,
+    rgba(7, 27, 82, 1) 0%,
+    rgba(0, 128, 128, 1) 100%
+  );
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.img-container img {
+  width: 4rem;
+}
+
+.link-container {
+  margin-right: 4%;
+  gap: 20px;
+}
+
+.link-container a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+/* Estilos específicos para el botón CREATE DRIVER */
+.create-button {
+  background-color: red;
+  color: white;
+  border: 2px solid white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.create-button:hover {
+  background-color: white;
+  color: red;
+}
+
+/* Estilos para el botón HOME */
+.home-button {
+  background-color: #007acc; /* Azul vibrante */
+  color: white;
+  border: 2px solid white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+  margin-right: 10px;
+}
+
+.home-button:hover {
+  background-color: white;
+  color: #007acc;
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 10px;
+  }
+
+  .link-container a {
+    font-size: 0.9rem;
+  }
 }
