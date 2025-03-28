@@ -229,7 +229,7 @@ const Home = () => {
   //const allDrivers = useSelector((state) => state.allDrivers);
   const allTeams = useSelector((state) => state.allTeams);
   const driversFiltered = useSelector((state) => state.driversFiltered);
-  const filters = useSelector((state) => state.filters);
+  //const filters = useSelector((state) => state.filters);
 
   //const [currentPage, setCurrentPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -242,7 +242,7 @@ const Home = () => {
     [...driversFiltered]?.splice(0, ITEMS_PER_PAGE)
   ); */
   const [searchBar, setSearchBar] = useState("");
-  const driverByName = useSelector((state) => state.driverByName);
+  //const driverByName = useSelector((state) => state.driverByName);
   /*  const [hasCleanedState, setHasCleanedState] = useState(false); */
 
   useEffect(() => {
@@ -250,9 +250,10 @@ const Home = () => {
     dispatch(getAllTeams());
   }, [dispatch]);
 
-  const displayedDrivers = useSelector((state) =>
-    state.filters ? state.driversFiltered : state.allDrivers
-  );
+  const displayedDrivers = useSelector((state) => {
+    if (state.driverByName.length > 0) return state.driverByName;
+    return state.filters ? state.driversFiltered : state.allDrivers;
+  });
 
   // Cálculo de índices para la paginación
   const totalPages = Math.ceil(displayedDrivers.length / driversPerPage);
@@ -359,9 +360,9 @@ const Home = () => {
       alert("Invalid driver name");
       return;
     }
-    dispatch(cleanStateName());
+    /* dispatch(cleanStateName()); */
     dispatch(getDriverByName(searchBar));
-    setCurrentPage(0); // Volver a la primera página
+    setCurrentPage(1); // Volver a la primera página
   };
 
   // useEffect(() => {
@@ -406,13 +407,6 @@ const Home = () => {
 
         {/*Pagination*/}
 
-        {/* <div className="home-pagination">
-          <button onClick={prevPage}>Prev</button>
-          <span className="page-number">Page {currentPage + 1}</span>
-          <button onClick={nextPage}>Next</button>
-        </div> */}
-
-        {/* Paginación */}
         <div className="home-pagination">
           <button
             onClick={() => handlePageChange(1)}
@@ -492,13 +486,7 @@ const Home = () => {
           </button>
         </div>
       </div>
-      {driverByName.length > 0 ? (
-        <Cards allDrivers={currentDrivers} />
-      ) : filters ? (
-        <Cards allDrivers={currentDrivers} />
-      ) : (
-        <Cards allDrivers={currentDrivers} />
-      )}
+      {<Cards allDrivers={currentDrivers} />}
     </div>
   );
 };
