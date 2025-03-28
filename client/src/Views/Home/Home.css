@@ -146,6 +146,10 @@ body {
     font-size: 0.85em;
   }
 
+  .home-pagination {
+    transform: scale(0.7);
+  }
+
   .home-filters {
     flex-wrap: wrap;
     border-radius: 5%;
