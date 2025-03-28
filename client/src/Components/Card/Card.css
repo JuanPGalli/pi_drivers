@@ -4,7 +4,7 @@
   align-items: center;
   background-color: #95dada;
   border: 1px solid grey;
-  width: calc(25% - 30px); /*25% width - ajustar margen*/
+  width: calc(20% - 30px); /*25% width - ajustar margen*/
   margin: 10px;
   border-radius: 5%;
 
