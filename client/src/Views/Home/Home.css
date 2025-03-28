@@ -110,7 +110,7 @@ body {
   border-radius: 5%;
 }
 
-.home-pagination button {
+.home-pagination-btn {
   background: #ff3333;
   color: white;
   border: none;
@@ -121,16 +121,15 @@ body {
   transition: 0.3s;
 }
 
-.home-pagination button:hover {
+.home-pagination-btn:hover {
   background: #ff6600;
   transform: scale(1.1);
 }
 
 /* Número de página */
-.page-number {
-  font-size: 18px;
+.page-number-btn {
   font-weight: bold;
-  color: white;
+  background: #ff6600;
 }
 
 /* Diseño responsive */

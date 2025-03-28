@@ -414,8 +414,18 @@ const Home = () => {
 
         {/* Paginación */}
         <div className="home-pagination">
-          <button onClick={() => handlePageChange(1)}>{"<<"}</button>
-          <button onClick={() => handlePageChange(currentPage - 1)}>
+          <button
+            onClick={() => handlePageChange(1)}
+            disabled={currentPage === 1}
+            className="home-pagination-btn"
+          >
+            {"<<"}
+          </button>
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="home-pagination-btn"
+          >
             {"<"}
           </button>
 
@@ -423,16 +433,28 @@ const Home = () => {
             <button
               key={num}
               onClick={() => handlePageChange(num)}
-              className={currentPage === paginationNumbers ? "active" : ""}
+              className={`home-pagination-btn ${
+                currentPage === num ? "page-number-btn" : ""
+              }`}
             >
               {num}
             </button>
           ))}
 
-          <button onClick={() => handlePageChange(currentPage + 1)}>
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="home-pagination-btn"
+          >
             {">"}
           </button>
-          <button onClick={() => handlePageChange(totalPages)}>{">>"}</button>
+          <button
+            onClick={() => handlePageChange(totalPages)}
+            disabled={currentPage === totalPages}
+            className="home-pagination-btn"
+          >
+            {">>"}
+          </button>
         </div>
 
         {/*Filters*/}
