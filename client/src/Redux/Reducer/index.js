@@ -16,6 +16,11 @@ let initialState = {
   filters: false,
   driverById: {},
   driverByName: [],
+  activeFilters: {
+    team: null,
+    source: null,
+    order: null,
+  },
 };
 
 function rootReducer(state = initialState, action) {
