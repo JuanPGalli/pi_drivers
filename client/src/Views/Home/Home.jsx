@@ -336,11 +336,13 @@ const Home = () => {
 
   const filterOrd = (event) => {
     // setSearchBar(""); // Limpiar búsqueda SearchBar
+    setCurrentPage(1);
     dispatch(filter(event.target.value));
   };
 
   const filterTeam = (event) => {
     // setSearchBar(""); // Limpiar búsqueda SearchBar
+    setCurrentPage(1);
     console.log(event.target.value);
     dispatch(filterByTeam(event.target.value, "team"));
   };
@@ -477,11 +479,20 @@ const Home = () => {
           {/* Botones individuales para API y DB */}
           <button
             className="filter-btn"
-            onClick={() => dispatch(filter("API"))}
+            onClick={() => {
+              setCurrentPage(1);
+              dispatch(filter("API"));
+            }}
           >
             API
           </button>
-          <button className="filter-btn" onClick={() => dispatch(filter("DB"))}>
+          <button
+            className="filter-btn"
+            onClick={() => {
+              setCurrentPage(1);
+              dispatch(filter("DB"));
+            }}
+          >
             DB
           </button>
         </div>
