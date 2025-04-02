@@ -1,14 +1,11 @@
 .cards-container {
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; */
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 5 columnas fijas */
   grid-template-rows: repeat(2, auto); /* 2 filas automáticas */
   gap: 15px;
   justify-content: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px 0 0 0;
 }
 
 /* Diseño responsive para pantallas más pequeñas */
@@ -19,12 +16,7 @@
       1fr
     ); /* En pantallas medianas, 2 columnas */
     grid-template-rows: repeat(5, auto); /* Se distribuye en 5 filas */
+    gap: 5px;
+    padding: 0;
   }
 }
-
-/* @media (max-width: 600px) {
-  .cards-container {
-    grid-template-columns: repeat(1, 1fr);  */ /* En móviles, 1 tarjeta por fila */
-/* grid-template-rows: auto;
-  }
-} */
