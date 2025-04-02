@@ -1,7 +1,8 @@
 import axios from "axios";
 import {
-  FILTERS,
-  FILTER_TEAM,
+  /* FILTERS,
+  FILTER_TEAM, */
+  SET_FILTERS,
   GET_ALL_DRIVERS,
   GET_ALL_TEAMS,
   GET_DRIVER_BY_ID,
@@ -63,29 +64,37 @@ export function getAllDrivers() {
   };
 }
 
-export function filter(orden) {
+export function setFilters(filters) {
+  return function (dispatch) {
+    return dispatch({
+      type: SET_FILTERS,
+      payload: filters,
+    });
+  };
+}
+
+/* export function filter(orden) {
   return function (dispatch) {
     return dispatch({
       type: FILTERS,
       payload: orden,
     });
   };
-}
+} */
 
-export function filterByTeam(value, filterType) {
+/* export function filterByTeam(value, filterType) {
   return function (dispatch) {
     return dispatch({
       type: FILTER_TEAM,
       payload: { value, filterType },
     });
   };
-}
+} */
 
 export function getDriverById(id) {
   return async function (dispatch) {
     try {
-      const result = (await axios.get(`/drivers/${id}`))
-        .data;
+      const result = (await axios.get(`/drivers/${id}`)).data;
       if (!result.image) {
         result.image = "defaultImage.jpg";
       }
@@ -110,9 +119,7 @@ export function cleanState() {
 export function getDriverByName(searchBar) {
   return async function (dispatch) {
     try {
-      const result = (
-        await axios.get(`/drivers/?name=${searchBar}`)
-      ).data;
+      const result = (await axios.get(`/drivers/?name=${searchBar}`)).data;
       console.log(result);
       return dispatch({
         type: GET_DRIVER_BY_NAME,
