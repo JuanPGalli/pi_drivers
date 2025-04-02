@@ -9,6 +9,10 @@ import {
   getDriverByName,
   setFilters,
 } from "../../Redux/Actions";
+import {
+  calculatePagination,
+  getPaginationNumbers,
+} from "../../utils/pagination";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -36,28 +40,15 @@ const Home = () => {
     return state.driversFiltered;
   });
 
-  // Cálculo de índices para la paginación
-  const totalPages = Math.ceil(displayedDrivers.length / driversPerPage);
-  const indexOfLastDriver = currentPage * driversPerPage;
-  const indexOfFirstDriver = indexOfLastDriver - driversPerPage;
-  const currentDrivers = displayedDrivers.slice(
-    indexOfFirstDriver,
-    indexOfLastDriver
+  // Calculamos la paginación con la función externa
+  const { totalPages, currentDrivers } = calculatePagination(
+    displayedDrivers,
+    currentPage,
+    driversPerPage
   );
 
   // Lógica para mostrar hasta 5 botones de páginas
-  const maxPageNumbers = 5;
-  let startPage = Math.max(1, currentPage - Math.floor(maxPageNumbers / 2));
-  let endPage = Math.min(totalPages, startPage + maxPageNumbers - 1);
-
-  if (endPage - startPage < maxPageNumbers - 1) {
-    startPage = Math.max(1, endPage - maxPageNumbers + 1);
-  }
-
-  const paginationNumbers = [];
-  for (let i = startPage; i <= endPage; i++) {
-    paginationNumbers.push(i);
-  }
+  const paginationNumbers = getPaginationNumbers(currentPage, totalPages);
 
   // Función para cambiar de página
   const handlePageChange = (pageNumber) => {
