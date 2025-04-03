@@ -5,18 +5,26 @@
   gap: 15px;
   justify-content: center;
   width: 100%;
-  padding: 10px 0 0 0;
+  padding: 10px 0;
+  box-sizing: content-box;
 }
 
 /* Diseño responsive para pantallas más pequeñas */
 @media (max-width: 1024px) {
   .cards-container {
     grid-template-columns: repeat(
-      2,
+      3,
       1fr
-    ); /* En pantallas medianas, 2 columnas */
-    grid-template-rows: repeat(5, auto); /* Se distribuye en 5 filas */
+    ); /* En pantallas medianas, 3 columnas */
+    grid-template-rows: auto; /* Se distribuye en 4 filas */
     gap: 5px;
-    padding: 0;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr); /* En móviles, 2 tarjetas por fila */
+    grid-template-rows: auto;
   }
 }

@@ -25,17 +25,10 @@
 
 .card-info {
   font-size: 1em;
-  padding: 10px;
+  /* padding: 0 5px; */
   text-align: center;
 }
 
 .card-info h4 {
-  margin: 2%;
+  margin: 2% 0;
 }
-
-/* Diseño responsive */
-/* @media (max-width: 768px) {
-  .card-container {
-    width: calc(50% - 30px);
-  }
-} */
