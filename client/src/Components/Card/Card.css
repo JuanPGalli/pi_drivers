@@ -32,3 +32,15 @@
 .card-info h4 {
   margin: 2% 0;
 }
+
+/* Diseño responsive para pantallas más pequeñas */
+@media (max-width: 1024px) {
+  .card-info h4 {
+    font-size: 0.8em;
+  }
+}
+@media (max-width: 600px) {
+  .card-info h4 {
+    font-size: 0.7em;
+  }
+}
