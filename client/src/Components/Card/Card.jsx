@@ -27,7 +27,7 @@ const Card = ({ id, name, surname, image, teams }) => {
         <h4>
           {name} {surname}
         </h4>
-        <h4>{teams}</h4>
+        <div className="card-info-teams">{teams}</div>
       </div>
     </div>
   );
