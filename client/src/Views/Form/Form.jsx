@@ -116,6 +116,8 @@ const Form = () => {
       dispatch(getAllDrivers());
     });
 
+    //.then(() => navigate("/home")) //Para que despues de crear el new driver vaya al /home.
+
     event.target.reset();
 
     setInput({
