@@ -169,8 +169,7 @@ const Form = () => {
   // Traigo los teams de la DB para colocarlos en el Form en la lista desplegable.
   useEffect(() => {
     if (!allTeams.lenght) {
-      const result = dispatch(getAllTeams());
-      console.log(result);
+      dispatch(getAllTeams());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
