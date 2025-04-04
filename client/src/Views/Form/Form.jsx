@@ -112,7 +112,6 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(input);
     dispatch(postNewDriver(input)).then(() => {
       dispatch(getAllDrivers());
     });
