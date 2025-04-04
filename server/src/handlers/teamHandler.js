@@ -1,6 +1,6 @@
 const { getDriversTeams } = require("../controllers/teamController");
 
-const getDriversHandler = async (req, res) => {
+const getDriversTeamsHandler = async (req, res) => {
   try {
     const response = await getDriversTeams();
     res.status(200).json(response);
@@ -9,4 +9,4 @@ const getDriversHandler = async (req, res) => {
   }
 };
 
-module.exports = { getDriversHandler };
+module.exports = { getDriversTeamsHandler };

@@ -15,10 +15,10 @@ const getDriversTeams = async function () {
       if (!allTeams.includes(word) && word.length > 0)
         allTeams.push(word.trim());
     });
-    const result = allTeams.map((temp) =>
+    const result = allTeams.map((team) =>
       Teams.findOrCreate({
         where: {
-          name: temp,
+          name: team,
         },
       })
     );
