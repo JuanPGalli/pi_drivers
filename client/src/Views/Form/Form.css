@@ -132,6 +132,33 @@
   box-shadow: 0 0 10px 1px grey;
 }
 
+/* Selección y eliminación de Teams */
+
+.selected-teams {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.team-tag {
+  background-color: #e0e0e0;
+  color: #1e293b;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.remove-team-btn {
+  background: none;
+  border: none;
+  margin-left: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
 /* Diseño responsive */
 
 /* Tablets y pantallas medianas */

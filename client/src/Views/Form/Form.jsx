@@ -20,8 +20,11 @@ const Form = () => {
     nationality: "Nationality is required",
     dob: "Date of Birth is required",
     description: "Description is required",
-    teams: "",
+    teams: "Selecting a Team or more is required",
   });
+
+  const [selectedTeam, setSelectedTeam] = useState("none");
+
   const navigate = useNavigate();
 
   const allTeams = useSelector((state) => state.allTeams);
@@ -112,11 +115,11 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(postNewDriver(input)).then(() => {
-      dispatch(getAllDrivers());
-    });
-
-    //.then(() => navigate("/home")) //Para que despues de crear el new driver vaya al /home.
+    dispatch(postNewDriver(input))
+      .then(() => {
+        dispatch(getAllDrivers());
+      })
+      .then(() => navigate("/home"));
 
     event.target.reset();
 
@@ -134,38 +137,47 @@ const Form = () => {
       nationality: "Nationality is required",
       dob: "Date of Birth is required",
       description: "Description is required",
-      teams: "",
+      teams: "Selecting a Team or more is required",
     });
   };
 
   const handleChange = (event) => {
     if (event.target.name === "teams") {
-      /* const selectedOptions = Array.from(
-        event.target.selectedOptions,
-        (option) => option.value
-      );
-      setInput({
-        ...input,
-        teams: selectedOptions, 
-      }); */
-      setInput({
-        ...input,
-        teams: [...input.teams, event.target.value],
-      });
+      const selectedTeam = event.target.value;
+      const updatedTeams = [...input.teams, selectedTeam];
+
+      setInput({ ...input, teams: updatedTeams });
+      setSelectedTeam("none");
+
+      if (input.teams.includes(selectedTeam)) {
+        setErrors({
+          ...errors,
+          teams: "You can't select the same team twice",
+        });
+      } else {
+        setErrors({ ...errors, teams: "" });
+      }
     } else {
-      setInput({
+      const updatedInput = {
         ...input,
         [event.target.name]: event.target.value,
-      });
+      };
+      setInput(updatedInput);
+      validate(updatedInput, event.target.name);
     }
-    validate(
-      {
-        ...input,
-        [event.target.name]: event.target.value,
-      }, //Le paso lo mismo que en setInput porque el estado no se actualiza en tiempo real cuando es dentro de la misma funcion
-      event.target.name
-    );
-    console.log(input);
+    setSelectedTeam("none");
+  };
+
+  const handleRemoveTeam = (teamId) => {
+    const updatedTeams = input.teams.filter((id) => id !== teamId);
+    setInput({ ...input, teams: updatedTeams });
+
+    // Validar de nuevo los teams por si el error era por duplicado
+    if (updatedTeams.length === input.teams.length) {
+      setErrors({ ...errors, teams: "Team not found" });
+    } else {
+      setErrors({ ...errors, teams: "" });
+    }
   };
 
   // Traigo los teams de la DB para colocarlos en el Form en la lista desplegable.
@@ -252,7 +264,12 @@ const Form = () => {
         </div>
 
         {/* Teams Selection */}
-        <select name="teams" onChange={handleChange} className="teams-btn">
+        <select
+          name="teams"
+          onChange={handleChange}
+          className="teams-btn"
+          value={selectedTeam}
+        >
           <option value="none">Select Teams</option>
           {allTeams.map((team) => (
             <option key={team.id} value={team.id}>
@@ -260,6 +277,26 @@ const Form = () => {
             </option>
           ))}
         </select>
+        <div className="selected-teams">
+          {input.teams.map((teamId) => {
+            const teamName = allTeams.find((t) => t.id === teamId)?.name;
+            return (
+              <span key={teamId} className="team-tag">
+                {teamName}
+                <button
+                  type="button"
+                  className="remove-team-btn"
+                  onClick={() => handleRemoveTeam(teamId)}
+                >
+                  ❌
+                </button>
+              </span>
+            );
+          })}
+          {errors.teams && (
+            <span className="error-message">{errors.teams}</span>
+          )}
+        </div>
         <input
           disabled={disable()}
           type="submit"
