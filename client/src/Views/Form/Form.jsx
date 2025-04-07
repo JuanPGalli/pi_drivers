@@ -144,20 +144,17 @@ const Form = () => {
   const handleChange = (event) => {
     if (event.target.name === "teams") {
       const selectedTeam = event.target.value;
-
-      if (input.teams.includes(selectedTeam)) {
-        setErrors({
-          ...errors,
-          teams: "You can't select the same team twice",
-        });
-        return; // no lo agregamos
-      }
-
       const updatedTeams = [...input.teams, selectedTeam];
+
       setInput({ ...input, teams: updatedTeams });
-      setErrors({ ...errors, teams: "" });
       setSelectedTeam("none");
-      return;
+
+      const hasDuplicates = new Set(updatedTeams).size !== updatedTeams.length;
+      if (hasDuplicates) {
+        setErrors({ ...errors, teams: "You can't select the same team twice" });
+      } else {
+        setErrors({ ...errors, teams: "" });
+      }
     } else {
       const updatedInput = {
         ...input,
@@ -169,18 +166,25 @@ const Form = () => {
     setSelectedTeam("none");
   };
 
-  const handleRemoveTeam = (teamIdToRemove) => {
-    const indexToRemove = input.teams.indexOf(teamIdToRemove);
-    if (indexToRemove === -1) return;
-
-    const updatedTeams = [...input.teams];
-    updatedTeams.splice(indexToRemove, 1); // elimina solo uno
+  const handleRemoveTeam = (teamId) => {
+    const updatedTeams = input.teams.filter((id, index, arr) => {
+      // Elimina solo la primera aparición del teamId
+      if (id === teamId && !arr.slice(0, index).includes(teamId)) {
+        return false;
+      }
+      return true;
+    });
 
     setInput({ ...input, teams: updatedTeams });
-    setErrors({
-      ...errors,
-      teams: updatedTeams.length ? "" : "Selecting a Team or more is required",
-    });
+
+    const hasDuplicates = new Set(updatedTeams).size !== updatedTeams.length;
+    if (hasDuplicates) {
+      setErrors({ ...errors, teams: "You can't select the same team twice" });
+    } else if (updatedTeams.length === 0) {
+      setErrors({ ...errors, teams: "Selecting a Team or more is required" });
+    } else {
+      setErrors({ ...errors, teams: "" });
+    }
   };
 
   // Traigo los teams de la DB para colocarlos en el Form en la lista desplegable.
