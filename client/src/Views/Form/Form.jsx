@@ -144,19 +144,20 @@ const Form = () => {
   const handleChange = (event) => {
     if (event.target.name === "teams") {
       const selectedTeam = event.target.value;
-      const updatedTeams = [...input.teams, selectedTeam];
-
-      setInput({ ...input, teams: updatedTeams });
-      setSelectedTeam("none");
 
       if (input.teams.includes(selectedTeam)) {
         setErrors({
           ...errors,
           teams: "You can't select the same team twice",
         });
-      } else {
-        setErrors({ ...errors, teams: "" });
+        return; // no lo agregamos
       }
+
+      const updatedTeams = [...input.teams, selectedTeam];
+      setInput({ ...input, teams: updatedTeams });
+      setErrors({ ...errors, teams: "" });
+      setSelectedTeam("none");
+      return;
     } else {
       const updatedInput = {
         ...input,
@@ -168,16 +169,18 @@ const Form = () => {
     setSelectedTeam("none");
   };
 
-  const handleRemoveTeam = (teamId) => {
-    const updatedTeams = input.teams.filter((id) => id !== teamId);
-    setInput({ ...input, teams: updatedTeams });
+  const handleRemoveTeam = (teamIdToRemove) => {
+    const indexToRemove = input.teams.indexOf(teamIdToRemove);
+    if (indexToRemove === -1) return;
 
-    // Validar de nuevo los teams por si el error era por duplicado
-    if (updatedTeams.length === input.teams.length) {
-      setErrors({ ...errors, teams: "Team not found" });
-    } else {
-      setErrors({ ...errors, teams: "" });
-    }
+    const updatedTeams = [...input.teams];
+    updatedTeams.splice(indexToRemove, 1); // elimina solo uno
+
+    setInput({ ...input, teams: updatedTeams });
+    setErrors({
+      ...errors,
+      teams: updatedTeams.length ? "" : "Selecting a Team or more is required",
+    });
   };
 
   // Traigo los teams de la DB para colocarlos en el Form en la lista desplegable.
@@ -278,10 +281,10 @@ const Form = () => {
           ))}
         </select>
         <div className="selected-teams">
-          {input.teams.map((teamId) => {
+          {input.teams.map((teamId, index) => {
             const teamName = allTeams.find((t) => t.id === teamId)?.name;
             return (
-              <span key={teamId} className="team-tag">
+              <span key={index} className="team-tag">
                 {teamName}
                 <button
                   type="button"
