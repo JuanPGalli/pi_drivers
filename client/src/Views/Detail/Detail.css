@@ -34,6 +34,7 @@
 
 .card-info-detail h4 {
   margin: 2%;
+  color: rgba(0, 128, 128, 1);
 }
 
 @media (max-width: 768px) {
