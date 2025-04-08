@@ -196,7 +196,7 @@
 /* Tablets y pantallas medianas */
 @media (max-width: 768px) {
   .register-form {
-    width: 90%;
+    width: 70%;
     padding: 20px;
   }
 
