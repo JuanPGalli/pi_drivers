@@ -211,9 +211,9 @@ const Form = () => {
               onChange={handleChange}
               className="form-input"
             />
-            {errors.name && (
-              <span className="error-message">{errors.name}</span>
-            )}
+            <span className="error-message">
+              {errors.name ? errors.name : ""}
+            </span>
           </div>
 
           <div className="input-wrapper">
@@ -224,9 +224,9 @@ const Form = () => {
               onChange={handleChange}
               className="form-input"
             />
-            {errors.surname && (
-              <span className="error-message">{errors.surname}</span>
-            )}
+            <span className="error-message">
+              {errors.surname ? errors.surname : ""}
+            </span>
           </div>
         </div>
 
@@ -239,9 +239,9 @@ const Form = () => {
             onChange={handleChange}
             className="form-input"
           />
-          {errors.nationality && (
-            <span className="error-message">{errors.nationality}</span>
-          )}
+          <span className="error-message">
+            {errors.nationality ? errors.nationality : ""}
+          </span>
         </div>
 
         {/* Date of Birth */}
@@ -253,7 +253,7 @@ const Form = () => {
             onChange={handleChange}
             className="form-input"
           />
-          {errors.dob && <span className="error-message">{errors.dob}</span>}
+          <span className="error-message">{errors.dob ? errors.dob : ""}</span>
         </div>
 
         {/* Description */}
@@ -265,9 +265,9 @@ const Form = () => {
             onChange={handleChange}
             className="form-input"
           />
-          {errors.description && (
-            <span className="error-message">{errors.description}</span>
-          )}
+          <span className="error-message">
+            {errors.description ? errors.description : ""}
+          </span>
         </div>
 
         {/* Teams Selection */}
@@ -302,9 +302,9 @@ const Form = () => {
               );
             })}
           </div>
-          {errors.teams && (
-            <span className="error-message">{errors.teams}</span>
-          )}
+          <span className="error-message">
+            {errors.teams ? errors.teams : ""}
+          </span>
         </div>
         <input
           disabled={disable()}
