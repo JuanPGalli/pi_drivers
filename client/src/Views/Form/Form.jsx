@@ -284,22 +284,24 @@ const Form = () => {
             </option>
           ))}
         </select>
-        <div className="selected-teams">
-          {input.teams.map((teamId, index) => {
-            const teamName = allTeams.find((t) => t.id === teamId)?.name;
-            return (
-              <span key={index} className="team-tag">
-                {teamName}
-                <button
-                  type="button"
-                  className="remove-team-btn"
-                  onClick={() => handleRemoveTeam(teamId)}
-                >
-                  ❌
-                </button>
-              </span>
-            );
-          })}
+        <div className="team-textarea-container">
+          <div className="team-textarea">
+            {input.teams.map((teamId, index) => {
+              const teamName = allTeams.find((t) => t.id === teamId)?.name;
+              return (
+                <div key={index} className="team-line">
+                  {teamName}
+                  <button
+                    type="button"
+                    className="remove-team-inline"
+                    onClick={() => handleRemoveTeam(teamId)}
+                  >
+                    ❌
+                  </button>
+                </div>
+              );
+            })}
+          </div>
           {errors.teams && (
             <span className="error-message">{errors.teams}</span>
           )}
