@@ -112,6 +112,7 @@ const updateDriver = async (id, newData) => {
   const driver = await Drivers.findByPk(id);
   if (!driver) throw new Error("Driver not found");
   await driver.update(newData);
+  //ver si hay que poner un setTeams(teamId), y pasar todos los parametros individualmente.
   return driver;
 };
 
