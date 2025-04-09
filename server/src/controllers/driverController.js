@@ -102,9 +102,24 @@ const createDriverDb = async (
   return newDriver;
 };
 
+const deleteDriver = async (id) => {
+  const driver = await Drivers.findByPk(id);
+  if (!driver) throw new Error("Driver not found");
+  await driver.destroy();
+};
+
+const updateDriver = async (id, newData) => {
+  const driver = await Drivers.findByPk(id);
+  if (!driver) throw new Error("Driver not found");
+  await driver.update(newData);
+  return driver;
+};
+
 module.exports = {
   getAllDrivers,
   getDriverByName,
   getDriverById,
   createDriverDb,
+  deleteDriver,
+  updateDriver,
 };

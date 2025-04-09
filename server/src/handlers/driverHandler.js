@@ -3,6 +3,8 @@ const {
   getDriverByName,
   getDriverById,
   createDriverDb,
+  deleteDriver,
+  updateDriver,
 } = require("../controllers/driverController");
 
 const getDriversHandler = async (req, res) => {
@@ -47,4 +49,30 @@ const postDriverHandler = async (req, res) => {
   }
 };
 
-module.exports = { getDriverIdHandler, getDriversHandler, postDriverHandler };
+const deleteDriverHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await deleteDriver(id);
+    res.status(200).json("Driver deleted succesfully");
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const updateDriverHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updated = await updateDriver(id, req.body);
+    res.status(200).json(updated);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = {
+  getDriverIdHandler,
+  getDriversHandler,
+  postDriverHandler,
+  deleteDriverHandler,
+  updateDriverHandler,
+};
