@@ -108,12 +108,30 @@ const deleteDriver = async (id) => {
   await driver.destroy();
 };
 
-const updateDriver = async (id, newData) => {
+const updateDriver = async (
+  id,
+  name,
+  surname,
+  description,
+  image,
+  nationality,
+  dob,
+  teamId
+) => {
   const driver = await Drivers.findByPk(id);
   if (!driver) throw new Error("Driver not found");
-  await driver.update(newData);
-  //ver si hay que poner un setTeams(teamId), y pasar todos los parametros individualmente.
-  return driver;
+  const modifiedDriver = await driver.update({
+    name,
+    surname,
+    description,
+    image,
+    nationality,
+    dob,
+  });
+
+  await modifiedDriver.setTeams(teamId);
+
+  return modifiedDriver;
 };
 
 module.exports = {

@@ -62,8 +62,19 @@ const deleteDriverHandler = async (req, res) => {
 const updateDriverHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    const updated = await updateDriver(id, req.body);
-    res.status(200).json(updated);
+    const { name, surname, description, image, nationality, dob, teamId } =
+      req.body;
+    const updatedDriver = await updateDriver(
+      id,
+      name,
+      surname,
+      description,
+      image,
+      nationality,
+      dob,
+      teamId
+    );
+    res.status(200).json(updatedDriver);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
