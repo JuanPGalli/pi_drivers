@@ -129,7 +129,10 @@ const updateDriver = async (
     dob,
   });
 
-  await modifiedDriver.setTeams(teamId);
+  if (Array.isArray(teamId)) {
+    await modifiedDriver.setTeams([]); // Limpia todas las relaciones anteriores
+    await modifiedDriver.setTeams(teamId); // Setea las nuevas
+  }
 
   return modifiedDriver;
 };
