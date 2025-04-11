@@ -53,7 +53,7 @@ const deleteDriverHandler = async (req, res) => {
   try {
     const { id } = req.params;
     await deleteDriver(id);
-    res.status(200).json("Driver deleted succesfully");
+    res.status(200).json("Driver deleted successfully");
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -64,7 +64,7 @@ const updateDriverHandler = async (req, res) => {
     const { id } = req.params;
     const { name, surname, description, image, nationality, dob, teamId } =
       req.body;
-    const updatedDriver = await updateDriver(
+    await updateDriver(
       id,
       name,
       surname,
@@ -74,7 +74,9 @@ const updateDriverHandler = async (req, res) => {
       dob,
       teamId
     );
-    res.status(200).json(updatedDriver);
+    res
+      .status(200)
+      .json(`The driver ${name} ${surname} was updated successfully`);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
